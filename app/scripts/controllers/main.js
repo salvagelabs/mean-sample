@@ -1,5 +1,7 @@
 'use strict';
 
+const angular = require('angular');
+
 angular.module('todoListApp')
 .controller('mainCtrl', function($scope, dataService){
   

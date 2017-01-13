@@ -1,5 +1,7 @@
 'use strict';
 
+const angular = require('angular');
+
 angular.module('todoListApp')
 .controller('todoCtrl', function($scope, dataService) {
   $scope.deleteTodo = function(todo, index) {
