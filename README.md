@@ -1,2 +1,5 @@
 # mean-sample
-MEAN sample following Treehouse vids
+
+MEAN sample app following Treehouse videos.
+
+https://teamtreehouse.com/library/building-a-mean-application
