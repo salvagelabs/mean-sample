@@ -101,17 +101,13 @@ webpackJsonp([0],[
 	  };
 	  
 	  this.deleteTodo = function(todo) {
-	    let queue = [];
-	    let req;
-
-	    if (todo._id) {
-	      req = $http.delete('/api/todos/' + todo._id, todo);
+	    
+	     if (!todo._id) {
+	        return $q.resolve();
 	    }
 
-	    queue.push(req);
-	    
-	    return $q.all(queue).then( (results) => {
-	      console.log("I deleted the todo!");
+	    return $http.delete('/api/todos/' + todo._id).then(function () {
+	        console.log("I deleted the " + todo.name + " todo!"); 
 	    });
 	  };
 	  
