@@ -9,12 +9,12 @@ angular.module('todoListApp')
   };
   
   this.deleteTodo = function(todo) {
-    
+
      if (!todo._id) {
         return $q.resolve();
     }
 
-    return $http.delete('/api/todos/' + todo._id).then(function () {
+    return $http.delete('/api/todos/' + todo._id).then( () => {
         console.log("I deleted the " + todo.name + " todo!"); 
     });
   };

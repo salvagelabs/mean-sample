@@ -45,11 +45,6 @@ router.put('/todos/:id', (req,res) => {
 // TODO: Add DELETE route to delete entries
 router.delete('/todos/:id', (req,res) => {
     let id = req.params.id;
-    // let todo = req.body;
-
-    // if (todo && todo._id !== id) {
-    //     return res.status(500).json({err: 'Ids do not match.'});
-    // }
 
     Todo.findByIdAndRemove(id, (err, todo) => {
         if (err) {

@@ -23,16 +23,24 @@ webpackJsonp([0],[
 	const angular = __webpack_require__(1);
 
 	angular.module('todoListApp')
-	.controller('mainCtrl', function($scope, dataService){
+	.controller('mainCtrl', function($scope, $log, $interval, dataService){
+
+	  $scope.seconds = 0;
+
+	  $scope.counter = function() {
+	      $scope.seconds++;
+	      $log.log($scope.seconds + ' have passed.');
+	  }
+
+	  $interval($scope.counter, 1000, 10);
 	  
 	  dataService.getTodos(function(response){
 	    var todos = response.data.todos;  
 	    $scope.todos =  todos;
-	    });
+	  });
 	  
 	  $scope.addTodo = function() {
-	    $scope.todos.unshift({name: "This is a new todo.",
-	                      completed: false});
+	    $scope.todos.unshift({name: "This is a new todo.", completed: false});
 	  };
 	  
 	})
@@ -47,6 +55,7 @@ webpackJsonp([0],[
 
 	angular.module('todoListApp')
 	.controller('todoCtrl', function($scope, dataService) {
+	  
 	  $scope.deleteTodo = function(todo, index) {
 	    $scope.todos.splice(index, 1);
 	    dataService.deleteTodo(todo);
@@ -101,12 +110,12 @@ webpackJsonp([0],[
 	  };
 	  
 	  this.deleteTodo = function(todo) {
-	    
+
 	     if (!todo._id) {
 	        return $q.resolve();
 	    }
 
-	    return $http.delete('/api/todos/' + todo._id).then(function () {
+	    return $http.delete('/api/todos/' + todo._id).then( () => {
 	        console.log("I deleted the " + todo.name + " todo!"); 
 	    });
 	  };

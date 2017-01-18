@@ -4,6 +4,7 @@ const angular = require('angular');
 
 angular.module('todoListApp')
 .controller('todoCtrl', function($scope, dataService) {
+  
   $scope.deleteTodo = function(todo, index) {
     $scope.todos.splice(index, 1);
     dataService.deleteTodo(todo);
